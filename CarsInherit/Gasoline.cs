@@ -8,10 +8,6 @@ namespace CarsInherit
 {
     internal class Gasoline : Car
     {
-        public int MaxSpeed { get; set; }
-        public int InitialCost { get; set; }
-        public int RunningCost { get; set; }
-
         public Gasoline()
         {
             MaxSpeed = 200;
@@ -19,8 +15,9 @@ namespace CarsInherit
             RunningCost = 20;
         }
 
-        public void PrintDetails()
+        public override void PrintCar()
         {
+            base.PrintCar();
             Console.WriteLine($"The max speed is {MaxSpeed}, initial cost is {InitialCost}" +
                 $" and running cost per hour at 10km/h is {RunningCost}");
         }
