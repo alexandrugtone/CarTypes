@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace CarsInherit
 {
-    internal class Diesel : Car
+    internal class Electric : Car
     {
-        public Diesel()
+        public Electric()
         {
-            MaxSpeed = 150;
-            InitialCost = 750;
-            RunningCost = 15;
+            MaxSpeed = 100;
+            InitialCost = 1000;
+            RunningCost = 10;
+            VehicleType = "Electric";
         }
 
         public override void PrintCar()

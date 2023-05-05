@@ -9,7 +9,7 @@ namespace CarsInherit
 {
     public class Functions
     {
-        public static int ChooseCar()
+        public static Car ChooseCar()
         {
             bool stopper = false;
             int input = 0;
@@ -25,20 +25,18 @@ namespace CarsInherit
                     Console.WriteLine("Please type in a number corresponding to the displayed choices!");
             }
             while (stopper == false);
+            Car vehicle = Car.ConstructCarFromInt(input);
 
-            return input;
+            return vehicle;
         }
 
-        public static void EqualExpense30km(int car1, int car2)
+        public static void EqualExpense30km(Car car1, Car car2)
         {
-            Car vehicle1 = Car.ConstructCarFromInt(car1);
-            Car vehicle2 = Car.ConstructCarFromInt(car2);
-            
             int counter = 1;
             bool stopper = true;
             do
             {
-                if(vehicle1.TotalCostWithInitialCost(counter, 30) == vehicle2.TotalCostWithInitialCost(counter, 30))
+                if(car1.TotalCostWithInitialCost(counter, 30) == car2.TotalCostWithInitialCost(counter, 30))
                 {
                     stopper = false;
                     Console.WriteLine($"At 30km/h, adding the initial car cost, after {counter} hours" +
@@ -48,6 +46,24 @@ namespace CarsInherit
                     counter++;
             }
             while (stopper);
+        }
+
+        public static void CompareExpense100km(Car car1, Car car2)
+        {
+            //we can accept 3 parameters to get the user input also on how many hours to run
+            int sumVehicle1 = car1.TotalCostWithoutInitialCost100km(5);
+            int sumVehicle2 = car2.TotalCostWithoutInitialCost100km(5);
+            Console.WriteLine($"{car1.VehicleType} vehicle cost at 100km for 5 hours is: {sumVehicle1} and" +
+                $" {car2.VehicleType} vehicle cost is: {sumVehicle2}!");
+        }
+
+        public static void CompareTaxiRegime(Car car1, Car car2)
+        {
+            //we can accept 3 parameters to get the user input also on how many days to run
+            int sumVehicle1 = car1.TotalCostTaxiRegime(3);
+            int sumVehicle2 = car2.TotalCostTaxiRegime(3);
+            Console.WriteLine($"{car1.VehicleType} vehicle cost at 30km for 8h/day for 3 days is: {sumVehicle1} and" +
+                $" {car2.VehicleType} vehicle cost is: {sumVehicle2}!");
         }
     }
 }

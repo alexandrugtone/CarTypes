@@ -10,8 +10,8 @@ namespace CarsInherit
             var firstCar = Functions.ChooseCar();
             var secondCar = Functions.ChooseCar();
             Functions.EqualExpense30km(firstCar, secondCar);
-
-            //to do: modifica functia choosecar sa intoarca Car nu int
+            Functions.CompareExpense100km(firstCar, secondCar);
+            Functions.CompareTaxiRegime(firstCar, secondCar);
         }
     }
 }

@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace CarsInherit
 {
-    abstract class Car
+    public abstract class Car
     {
         string Brand { get; set; }
         int ManufactureYear { get; set; }
         public int MaxSpeed { get; set; }
         public int InitialCost { get; set; }
+        public string VehicleType { get; set; }
         /// <summary>
         /// Running Cost per 10km/h
         /// </summary>
@@ -35,6 +36,12 @@ namespace CarsInherit
             return sum;
         }
 
+        public int TotalCostWithoutInitialCost100km(int hours)
+        {
+            int sum = hours * (10 * RunningCost);
+            return sum;
+        }
+
         public static Car ConstructCarFromInt(int num)
         {
             Car vehicle1;
@@ -52,6 +59,14 @@ namespace CarsInherit
                 default: throw new Exception("Does not exist " + num);
             }
             return vehicle1;
+        }
+
+        public int TotalCostTaxiRegime(int days)
+        {
+            const int dailyHours = 8;
+            const int maxSpeedperH = 30;
+            int sum = days * (dailyHours * (maxSpeedperH / 10 * RunningCost));
+            return sum;
         }
     }
 }
