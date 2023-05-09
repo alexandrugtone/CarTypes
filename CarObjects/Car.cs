@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarsInherit
+namespace CarObjects
 {
     public abstract class Car
     {
@@ -27,6 +27,18 @@ namespace CarsInherit
         public virtual void PrintCar()
         {
             Console.WriteLine(Brand + " " + ManufactureYear);
+        }
+
+        //public virtual string PrintCar(int id)
+        //{
+        //    var carInfo = ConstructCarFromInt(id);
+        //    string description = carInfo.PrintCar();
+        //}
+
+        public static Car ? GetCar(int id)
+        {
+            var carInfo = ConstructCarFromInt(id);
+            return carInfo;
         }
 
         public int TotalCostWithInitialCost(int hours, int speed)
