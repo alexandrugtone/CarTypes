@@ -9,6 +9,7 @@
   },
   "profiles": {
     "CarsAPI": {
+      "launchUrl": "swagger",
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

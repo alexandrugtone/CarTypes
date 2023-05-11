@@ -16,11 +16,11 @@ namespace CarObjects
             VehicleType = "Diesel";
         }
 
-        public override void PrintCar()
+        public override string PrintCar()
         {
-            base.PrintCar();
-            Console.WriteLine($"The max speed is {MaxSpeed}, initial cost is {InitialCost}" +
-                $" and running cost per hour at 10km/h is {RunningCost}");
+            string description = base.PrintCar() + $"The max speed is {MaxSpeed}, initial cost is {InitialCost}" +
+                $" and running cost per hour at 10km/h is {RunningCost}";
+            return description;
         }
     }
 }

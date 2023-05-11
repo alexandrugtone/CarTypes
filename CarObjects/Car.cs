@@ -24,18 +24,13 @@ namespace CarObjects
             ManufactureYear = 2020;
         }
 
-        public virtual void PrintCar()
+        public virtual string PrintCar()
         {
-            Console.WriteLine(Brand + " " + ManufactureYear);
+            string description = $"{this.Brand} {this.ManufactureYear} can reach {this.MaxSpeed} and costs {this.RunningCost}!";
+            return description;
         }
 
-        //public virtual string PrintCar(int id)
-        //{
-        //    var carInfo = ConstructCarFromInt(id);
-        //    string description = carInfo.PrintCar();
-        //}
-
-        public static Car ? GetCar(int id)
+        public static Car GetCar(int id)
         {
             var carInfo = ConstructCarFromInt(id);
             return carInfo;

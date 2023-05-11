@@ -17,5 +17,6 @@ app.UseSwaggerUI(c =>
 });
 
 app.MapGet("/cars/{id}", (int id) => CarObjects.Car.GetCar(id));
+app.MapGet("/cars/{id}", (int id) => CarObjects.Car.GetCar(id).PrintCar());
 
 app.Run();

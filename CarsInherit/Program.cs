@@ -12,6 +12,7 @@ namespace CarsInherit
             Functions.EqualExpense30km(firstCar, secondCar);
             Functions.CompareExpense100km(firstCar, secondCar);
             Functions.CompareTaxiRegime(firstCar, secondCar);
+            Console.WriteLine(firstCar.PrintCar());
         }
     }
 }
