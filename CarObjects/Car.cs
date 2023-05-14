@@ -17,6 +17,7 @@ namespace CarObjects
         /// Running Cost per 10km/h
         /// </summary>
         public int RunningCost { get; set; }
+        public int ComparingResult { get; set; }
 
         public Car()
         {

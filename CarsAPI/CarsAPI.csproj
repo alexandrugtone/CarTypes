@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CarObjects\CarObjects.csproj" />
+    <ProjectReference Include="..\CarsInherit\CarsInherit.csproj" />
   </ItemGroup>
 
 </Project>
