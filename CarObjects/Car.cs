@@ -64,7 +64,7 @@ namespace CarObjects
                 case 3:
                     vehicle1 = new Diesel();
                     break;
-                default: throw new Exception("Does not exist " + num);
+                default: throw new CarCannotBeConstructedException(num);
             }
             return vehicle1;
         }

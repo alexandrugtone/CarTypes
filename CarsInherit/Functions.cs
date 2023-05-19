@@ -36,11 +36,18 @@ namespace CarsInherit
             var vehicle1 = Car.ConstructCarFromInt(car1);
             var vehicle2 = Car.ConstructCarFromInt(car2);
 
+            var ret = EqualExpense30km(vehicle1, vehicle2);
+
+            return ret;
+        }
+
+        public static int EqualExpense30km(Car vehicle1, Car vehicle2)
+        {
             int counter = 1;
             bool stopper = true;
             do
             {
-                if(vehicle1.TotalCostWithInitialCost(counter, 30) == vehicle2.TotalCostWithInitialCost(counter, 30))
+                if (vehicle1.TotalCostWithInitialCost(counter, 30) == vehicle2.TotalCostWithInitialCost(counter, 30))
                 {
                     stopper = false;
                     //Console.WriteLine($"At 30km/h, adding the initial car cost, after {counter} hours" +
