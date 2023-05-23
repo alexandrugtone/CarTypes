@@ -20,7 +20,7 @@ namespace CarsInherit
                 Console.WriteLine($"Choose a car type:");
                 for(int i= 0; i<objects.Length; i++)
                     Console.Write(i+1 + "." + objects[i] + " ");
-
+                Console.WriteLine();
                 string carType = Console.ReadLine()??"";
                 bool isNumber = int.TryParse(carType, out input);
                 if (isNumber && input > 0 && input < objects.Length+1 )

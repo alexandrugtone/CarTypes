@@ -13,8 +13,12 @@ namespace CarObjects
         {
             //todo: make enum instead of int DONE
             //todo: add diesel to hybrid DONE
-            //todo: make an exception if the sum of arguments != 100
-            //todo: verify 30km to hybrid
+            //todo: make an exception if the sum of arguments != 100 DONE
+            //todo: verify 30km to hybrid DONE
+            var sum = electricP + gasOrDiesel;
+            if(sum < 100 || sum > 100)
+                throw new CarPercentageIncorrectException(electricP, gasOrDiesel);
+
             var electric = ConstructCar(CarType.Electric);
             var fuel = ConstructCar(choice);
             MaxSpeed = ((electricP * electric.MaxSpeed) + (gasOrDiesel * fuel.MaxSpeed)) / 200;

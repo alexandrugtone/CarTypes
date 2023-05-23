@@ -8,26 +8,29 @@ namespace CarsInherit
     {
         public static void Main()
         {
-            //todo: make a hybrid with percentage <> 100
-            //intercept custom exception
-            //display to the user how much is different than 100
+            //todo: make a hybrid with percentage <> 100 DONE
+            //intercept custom exception DONE
+            //display to the user how much is different than 100 DONE
 
-            Hybrid h = new Hybrid(75, 25, CarType.Gasoline);
-            Console.WriteLine(h.MaxSpeed);
-            //try
-            //{
-            //    CarObjects.Car.ConstructCarFromInt(100);
-            //}
-            //catch(CarCannotBeConstructedException ex1)
-            //{
-            //    Console.WriteLine("The number provided is wrong: " + ex1.nrCar);
-            //}
-            //catch(Exception)
-            //{
-            //    //Console.WriteLine("A aparut o exceptie: " + ex.Message);
-                
-            //    return;
-            //}
+            try
+            {
+                Hybrid h = new Hybrid(25, 75, CarType.Gasoline);
+                Console.WriteLine(h.MaxSpeed);
+            }
+            catch (CarCannotBeConstructedException ex1)
+            {
+                Console.WriteLine("The number provided is wrong: " + ex1.nrCar);
+            }
+            catch (CarPercentageIncorrectException ex2)
+            {
+                Console.WriteLine("The percentages provided doesn't add to 100: " +
+                    ex2.electricP + "+" + ex2.fuelP + "=" + ex2.sum);
+            }
+            catch (Exception ex3)
+            {
+                Console.WriteLine("A aparut o exceptie: " + ex3.Message);
+                return;
+            }
 
             var firstCar = Functions.ChooseCar();
             var secondCar = Functions.ChooseCar();
