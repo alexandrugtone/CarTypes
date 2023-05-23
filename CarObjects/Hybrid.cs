@@ -9,15 +9,21 @@ namespace CarObjects
 {
     public class Hybrid : Car
     {
-        public Hybrid(int electricP, int gasolineP)
+        public Hybrid(int electricP, int gasOrDiesel, CarType choice)
         {
-            //todo: make enum instead of int
-            //todo: add diesel to hybrid
+            //todo: make enum instead of int DONE
+            //todo: add diesel to hybrid DONE
             //todo: make an exception if the sum of arguments != 100
             //todo: verify 30km to hybrid
             var electric = ConstructCar(CarType.Electric);
-            var gas = ConstructCar(CarType.Gasoline);
-            MaxSpeed = ((electricP * electric.MaxSpeed) + (gasolineP * gas.MaxSpeed)) / 200;
+            var fuel = ConstructCar(choice);
+            MaxSpeed = ((electricP * electric.MaxSpeed) + (gasOrDiesel * fuel.MaxSpeed)) / 200;
+            InitialCost = ((electricP * electric.InitialCost) + (gasOrDiesel * fuel.InitialCost)) / 200;
+            RunningCost = ((electricP * electric.RunningCost) + (gasOrDiesel * fuel.RunningCost)) / 200;
+            if (choice == CarType.Gasoline)
+                VehicleType = "HybridGas";
+            else
+                VehicleType = "HybridDiesel";
         }
     }
 }

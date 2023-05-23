@@ -14,10 +14,13 @@ namespace CarsInherit
         {
             bool stopper = false;
             int input = 0;
-            string[] objects = { "Electric", "Gasoline", "Diesel" };
+            string[] objects = { "Electric", "Gasoline", "Diesel", "HybridGas", "HybridDiesel" };
             do
             {
-                Console.WriteLine($"Choose a car type: 1.{objects[0]} 2.{objects[1]} 3.{objects[2]}");
+                Console.WriteLine($"Choose a car type:");
+                for(int i= 0; i<objects.Length; i++)
+                    Console.Write(i+1 + "." + objects[i] + " ");
+
                 string carType = Console.ReadLine()??"";
                 bool isNumber = int.TryParse(carType, out input);
                 if (isNumber && input > 0 && input < objects.Length+1 )

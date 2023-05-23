@@ -12,7 +12,7 @@ namespace CarsInherit
             //intercept custom exception
             //display to the user how much is different than 100
 
-            Hybrid h = new Hybrid(75, 25);
+            Hybrid h = new Hybrid(75, 25, CarType.Gasoline);
             Console.WriteLine(h.MaxSpeed);
             //try
             //{

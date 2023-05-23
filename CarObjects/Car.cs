@@ -11,7 +11,8 @@ namespace CarObjects
         Electric,
         Gasoline,
         Diesel,
-        Hybrid,
+        HybridGas,
+        HybridDiesel,
     }
 
     public abstract class Car
@@ -77,6 +78,10 @@ namespace CarObjects
                     vehicle1 = new Gasoline(); break;
                 case 3:
                     vehicle1 = new Diesel(); break;
+                case 4:
+                    vehicle1 = new Hybrid(25, 75, CarType.Gasoline); break;
+                case 5:
+                    vehicle1 = new Hybrid(25, 75, CarType.Diesel); break;
                 default: throw new CarCannotBeConstructedException(num);
             }
             return vehicle1;
@@ -92,7 +97,11 @@ namespace CarObjects
                 case CarType.Gasoline:
                     vehicle1 = new Gasoline(); break;
                 case CarType.Diesel:
-                    vehicle1= new Diesel(); break;
+                    vehicle1 = new Diesel(); break;
+                case CarType.HybridGas:
+                    vehicle1 = new Hybrid(25, 75, CarType.Gasoline); break;
+                case CarType.HybridDiesel:
+                    vehicle1 = new Hybrid(25, 75, CarType.Diesel); break;
                 default: throw new Exception();
             }
             return vehicle1;
