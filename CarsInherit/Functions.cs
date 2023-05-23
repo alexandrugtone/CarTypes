@@ -26,15 +26,15 @@ namespace CarsInherit
                     Console.WriteLine("Please type in a number corresponding to the displayed choices!");
             }
             while (stopper == false);
-            Car vehicle = Car.ConstructCarFromInt(input);
+            Car vehicle = Car.ConstructCar(input);
 
             return vehicle;
         }
 
         public static int EqualExpense30km(int car1, int car2)
         {
-            var vehicle1 = Car.ConstructCarFromInt(car1);
-            var vehicle2 = Car.ConstructCarFromInt(car2);
+            var vehicle1 = Car.ConstructCar(car1);
+            var vehicle2 = Car.ConstructCar(car2);
 
             var ret = EqualExpense30km(vehicle1, vehicle2);
 
@@ -77,8 +77,8 @@ namespace CarsInherit
 
         public static CombinedCars GetComparisonExpense100km(int firstChoice, int secondChoice)
         {
-            Car vehicle1 = Car.ConstructCarFromInt(firstChoice);
-            Car vehicle2 = Car.ConstructCarFromInt(secondChoice);
+            Car vehicle1 = Car.ConstructCar(firstChoice);
+            Car vehicle2 = Car.ConstructCar(secondChoice);
 
             var result = CompareExpense100km(vehicle1, vehicle2);
             return result;
@@ -100,8 +100,8 @@ namespace CarsInherit
 
         public static CombinedCars GetComparisonTaxiRegime(int firstChoice, int secondChoice)
         {
-            Car vehicle1 = Car.ConstructCarFromInt(firstChoice);
-            Car vehicle2 = Car.ConstructCarFromInt(secondChoice);
+            Car vehicle1 = Car.ConstructCar(firstChoice);
+            Car vehicle2 = Car.ConstructCar(secondChoice);
 
             var result = CompareTaxiRegime(vehicle1, vehicle2);
             return result;

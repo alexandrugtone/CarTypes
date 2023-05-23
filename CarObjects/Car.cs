@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace CarObjects
 {
+    public enum CarType
+    {
+        Electric,
+        Gasoline,
+        Diesel,
+        Hybrid,
+    }
+
     public abstract class Car
     {
         string Brand { get; set; }
@@ -33,7 +41,7 @@ namespace CarObjects
 
         public static Car GetCar(int id)
         {
-            var carInfo = ConstructCarFromInt(id);
+            var carInfo = ConstructCar(id);
             return carInfo;
         }
 
@@ -50,31 +58,44 @@ namespace CarObjects
             return sum;
         }
 
-        public static Car ConstructCarFromInt(int num)
-        {
-            Car vehicle1;
-            switch (num)
-            {
-                case 1:
-                    vehicle1 = new Electric();
-                    break;
-                case 2:
-                    vehicle1 = new Gasoline();
-                    break;
-                case 3:
-                    vehicle1 = new Diesel();
-                    break;
-                default: throw new CarCannotBeConstructedException(num);
-            }
-            return vehicle1;
-        }
-
         public int TotalCostTaxiRegime(int days)
         {
             const int dailyHours = 8;
             const int maxSpeedperH = 30;
             int sum = days * (dailyHours * (maxSpeedperH / 10 * RunningCost));
             return sum;
+        }
+
+        public static Car ConstructCar(int num)
+        {
+            Car vehicle1;
+            switch (num)
+            {
+                case 1:
+                    vehicle1 = new Electric(); break;
+                case 2:
+                    vehicle1 = new Gasoline(); break;
+                case 3:
+                    vehicle1 = new Diesel(); break;
+                default: throw new CarCannotBeConstructedException(num);
+            }
+            return vehicle1;
+        }
+
+        public static Car ConstructCar(CarType choice)
+        {
+            Car vehicle1;
+            switch (choice)
+            {
+                case CarType.Electric:
+                    vehicle1 = new Electric(); break;
+                case CarType.Gasoline:
+                    vehicle1 = new Gasoline(); break;
+                case CarType.Diesel:
+                    vehicle1= new Diesel(); break;
+                default: throw new Exception();
+            }
+            return vehicle1;
         }
     }
 }

@@ -15,8 +15,8 @@ namespace CarObjects
             //todo: add diesel to hybrid
             //todo: make an exception if the sum of arguments != 100
             //todo: verify 30km to hybrid
-            var electric = ConstructCarFromInt(1);
-            var gas = ConstructCarFromInt(2);
+            var electric = ConstructCar(CarType.Electric);
+            var gas = ConstructCar(CarType.Gasoline);
             MaxSpeed = ((electricP * electric.MaxSpeed) + (gasolineP * gas.MaxSpeed)) / 200;
         }
     }
