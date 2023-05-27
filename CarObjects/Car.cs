@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace CarObjects
 {
+    //todo: comment hybrid diesel/gasoline and implement switch
+    [Flags]
     public enum CarType
     {
-        Electric,
-        Gasoline,
-        Diesel,
-        HybridGas,
-        HybridDiesel,
+        None = 0,
+        Electric = 1,
+        Gasoline = 2,
+        Diesel = 4,
+        //HybridDiesel = 5,
+        //HybridGas = 3,
     }
 
     public abstract class Car
@@ -69,22 +72,8 @@ namespace CarObjects
 
         public static Car ConstructCar(int num)
         {
-            Car vehicle1;
-            switch (num)
-            {
-                case 1:
-                    vehicle1 = new Electric(); break;
-                case 2:
-                    vehicle1 = new Gasoline(); break;
-                case 3:
-                    vehicle1 = new Diesel(); break;
-                case 4:
-                    vehicle1 = new Hybrid(25, 75, CarType.Gasoline); break;
-                case 5:
-                    vehicle1 = new Hybrid(25, 75, CarType.Diesel); break;
-                default: throw new CarCannotBeConstructedException(num);
-            }
-            return vehicle1;
+            CarType choice = (CarType)num;
+            return ConstructCar(choice);
         }
 
         public static Car ConstructCar(CarType choice)
@@ -98,9 +87,9 @@ namespace CarObjects
                     vehicle1 = new Gasoline(); break;
                 case CarType.Diesel:
                     vehicle1 = new Diesel(); break;
-                case CarType.HybridGas:
+                case CarType.Electric | CarType.Gasoline: //todo: delete hybridgas and identify with flags the combination
                     vehicle1 = new Hybrid(25, 75, CarType.Gasoline); break;
-                case CarType.HybridDiesel:
+                case CarType.Electric | CarType.Diesel:
                     vehicle1 = new Hybrid(25, 75, CarType.Diesel); break;
                 default: throw new Exception();
             }

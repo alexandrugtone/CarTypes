@@ -8,10 +8,10 @@ namespace CarsInherit
     {
         public static void Main()
         {
-            //todo: make a hybrid with percentage <> 100 DONE
-            //intercept custom exception DONE
-            //display to the user how much is different than 100 DONE
-
+            //var test1 = Car.ConstructCar(CarType.Electric | CarType.Gasoline);
+            //var test2 = Car.ConstructCar(CarType.Gasoline);
+            var test3 = Car.ConstructCar(5);
+            Console.WriteLine(CarType.Gasoline | CarType.Electric);
             try
             {
                 Hybrid h = new Hybrid(25, 75, CarType.Gasoline);

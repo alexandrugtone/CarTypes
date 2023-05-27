@@ -14,7 +14,7 @@ namespace CarsInherit
         {
             bool stopper = false;
             int input = 0;
-            string[] objects = { "Electric", "Gasoline", "Diesel", "HybridGas", "HybridDiesel" };
+            string[] objects = { "Electric", "Gasoline", "HybridGas", "Diesel", "HybridDiesel" };
             do
             {
                 Console.WriteLine($"Choose a car type:");
