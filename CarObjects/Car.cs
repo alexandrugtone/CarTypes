@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,16 +20,25 @@ namespace CarObjects
         //HybridGas = 3,
     }
 
-    public abstract class Car
+    public class Car
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
+        [BsonElement("Brand")]
         string Brand { get; set; }
+        [BsonElement("ManufactureYear")]
         int ManufactureYear { get; set; }
+        [BsonElement("MaxSpeed")]
         public int MaxSpeed { get; set; }
+        [BsonElement("InitialCost")]
         public int InitialCost { get; set; }
+        [BsonElement("VehicleType")]
         public string VehicleType { get; set; }
         /// <summary>
         /// Running Cost per 10km/h
         /// </summary>
+        [BsonElement("RunningCost")]
         public int RunningCost { get; set; }
         public int ComparingResult { get; set; }
 
@@ -79,20 +90,30 @@ namespace CarObjects
         public static Car ConstructCar(CarType choice)
         {
             Car vehicle1;
-            switch (choice)
+            var type = CarType.Gasoline | CarType.Diesel;
+
+            if ((choice & CarType.Electric) == CarType.Electric && (choice & type) != CarType.None)
             {
-                case CarType.Electric:
-                    vehicle1 = new Electric(); break;
-                case CarType.Gasoline:
-                    vehicle1 = new Gasoline(); break;
-                case CarType.Diesel:
-                    vehicle1 = new Diesel(); break;
-                case CarType.Electric | CarType.Gasoline: //todo: delete hybridgas and identify with flags the combination
-                    vehicle1 = new Hybrid(25, 75, CarType.Gasoline); break;
-                case CarType.Electric | CarType.Diesel:
-                    vehicle1 = new Hybrid(25, 75, CarType.Diesel); break;
-                default: throw new Exception();
+                vehicle1 = new Hybrid(25, 75, choice & type);
             }
+            else
+            {
+                switch (choice)
+                {
+                    case CarType.Electric:
+                        vehicle1 = new Electric(); break;
+                    case CarType.Gasoline:
+                        vehicle1 = new Gasoline(); break;
+                    case CarType.Diesel:
+                        vehicle1 = new Diesel(); break;
+                    //case CarType.Electric | CarType.Gasoline: //todo: delete hybridgas and identify with flags the combination
+                    //    vehicle1 = new Hybrid(25, 75, CarType.Gasoline); break;
+                    //case CarType.Electric | CarType.Diesel:
+                    //    vehicle1 = new Hybrid(25, 75, CarType.Diesel); break;
+                    default: throw new Exception();
+                }
+            }
+
             return vehicle1;
         }
     }
