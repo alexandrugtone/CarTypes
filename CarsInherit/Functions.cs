@@ -6,12 +6,18 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using CarObjects;
+using CarsDAL;
 
 namespace CarsInherit
 {
     public class Functions
     {
-        public static Car ChooseCar()
+        //private readonly CarsService? _carsService;
+        //public Functions(CarsService carsService)
+        //{
+        //    _carsService = carsService;
+        //}
+        public static async Car ChooseCar()
         {
             bool stopper = false;
             int input = 0;
@@ -31,6 +37,7 @@ namespace CarsInherit
             }
             while (stopper == false);
             Car vehicle = Car.ConstructCar(input);
+            //await _carsService.CreateAsync(vehicle);
 
             return vehicle;
         }

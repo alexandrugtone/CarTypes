@@ -1,5 +1,6 @@
 using CarsAPI;
 using Microsoft.OpenApi.Models;
+using CarsDAL;
 
 var builder = WebApplication.CreateBuilder(args);
 
