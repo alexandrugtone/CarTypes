@@ -9,16 +9,19 @@ namespace CarsDAL
         private readonly IMongoCollection<Car> _carsCollection;
 
         public CarsService(
-            IOptions<CarsDatabaseSettings> carsDatabaseSettings)
+            IOptions<CarsDatabaseSettings> carsDatabaseSettings) : this(carsDatabaseSettings.Value)
+        {}
+
+        public CarsService(CarsDatabaseSettings settings)
         {
             var mongoClient = new MongoClient(
-                carsDatabaseSettings.Value.ConnectionString);
+               settings.ConnectionString);
 
             var mongoDatabase = mongoClient.GetDatabase(
-                carsDatabaseSettings.Value.DatabaseName);
+                settings.DatabaseName);
 
             _carsCollection = mongoDatabase.GetCollection<Car>(
-                carsDatabaseSettings.Value.CarsCollectionBrand);
+                settings.CarsCollectionBrand);
         }
 
         public async Task<List<Car>> GetAsync() =>

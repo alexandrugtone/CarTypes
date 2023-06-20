@@ -12,12 +12,12 @@ namespace CarsInherit
 {
     public class Functions
     {
-        //private readonly CarsService? _carsService;
-        //public Functions(CarsService carsService)
-        //{
-        //    _carsService = carsService;
-        //}
-        public static async Car ChooseCar()
+        private readonly CarsService _carsService;
+        public Functions(CarsService carsService)
+        {
+            _carsService = carsService;
+        }
+        public async Task<Car> ChooseCar()
         {
             bool stopper = false;
             int input = 0;
@@ -37,7 +37,7 @@ namespace CarsInherit
             }
             while (stopper == false);
             Car vehicle = Car.ConstructCar(input);
-            //await _carsService.CreateAsync(vehicle);
+            await _carsService.CreateAsync(vehicle);
 
             return vehicle;
         }

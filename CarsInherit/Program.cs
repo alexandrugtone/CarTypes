@@ -1,12 +1,14 @@
 ﻿using CarObjects;
+using CarsDAL;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using System;
-using System.Security.Cryptography.X509Certificates;
 
 namespace CarsInherit
 {
     public class Program
     {
-        public static void Main()
+        public static async Task<int> Main()
         {
             //var test1 = Car.ConstructCar(CarType.Electric | CarType.Gasoline);
             //var test2 = Car.ConstructCar(CarType.Gasoline);
@@ -31,14 +33,20 @@ namespace CarsInherit
             //    Console.WriteLine("A aparut o exceptie: " + ex3.Message);
             //    return;
             //}
+            //todo: read the dbsettings from appsettings.json
+            var confBuilder = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            var dbSettings = new CarsDatabaseSettings(confBuilder);
+            var service = new CarsService(dbSettings);
+            var f = new Functions(service);
 
-            var firstCar = Functions.ChooseCar();
-            var secondCar = Functions.ChooseCar();
+            var firstCar = await f.ChooseCar();
+            var secondCar = await f.ChooseCar();
             //Functions.EqualExpense30km(firstCar, secondCar);
             //Functions.CompareExpense100km(firstCar, secondCar);
             //Functions.CompareTaxiRegime(firstCar, secondCar);
             Console.WriteLine(firstCar.PrintCar());
             Console.WriteLine(secondCar.PrintCar());
+            return 0;
         }
     }
 }
